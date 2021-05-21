@@ -1,25 +1,26 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from 'react';
+import { useHistory, Route } from 'react-router-dom';
+import Login from './Login';
+import Notas from './Notas';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+function App ()
+{
+    let history = useHistory();
+
+    function mostrarNotas () {
+        history.push('/notas');
+    }
+
+    return (
+      <>
+          <Route exact path='/' render={ () => <div>
+              <Login />
+          </div> } />
+          <Route exact path="/notas" render={ () => <div>
+              <Notas />
+          </div> } />
+      </>
+    );
 }
 
 export default App;
